@@ -34,7 +34,8 @@
 		<property name="converters">
 			<set>
 				<!-- 指定自定义转换器的全路径名称 -->
-				<bean class="com.junah.controller.converter.CustomGlobalStrToDateConverter"/>
+				<!--  -->
+				<bean class="com.eleba.controller.converter.CustomGlobalStrToDateConverter"/>
 			</set>
 		</property>
 	</bean>
@@ -49,11 +50,14 @@
 	</bean>
 	
 	<!-- 配置拦截器 -->
+	<!--  
 	<mvc:interceptors>
 		<mvc:interceptor>
-		<!-- /**拦截所有 -->
+		
 			<mvc:mapping path="/**"/>
 			<bean class="com.eleba.interceptor.interceptor1"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	-->
 </beans>

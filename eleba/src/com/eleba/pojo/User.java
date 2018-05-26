@@ -36,6 +36,10 @@ public class User implements Serializable {
 	private String code;
 	private Integer type;
 	private String imgurl;
+
+	
+	
+	
 	public String getUid() {
 		return uid;
 	}
