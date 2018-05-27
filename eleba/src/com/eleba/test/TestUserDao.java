@@ -22,8 +22,8 @@ public class TestUserDao {
 	public void testInsetUser() {
 		
 		User user=new User();
-		user.setUid("002");
-		user.setUsername("jun");
+		user.setUid("003");
+		user.setUsername("翁俊河");
 		userMapper.insertUser(user);
 		
 	}

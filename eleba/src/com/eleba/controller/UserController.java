@@ -17,5 +17,10 @@ public class UserController {
 	public void addUser() {
 		userService.addUser();
 	}
+	
+	@RequestMapping(value="/index")
+	public String index() {
+		return "admin/index";
+	}
 
 }
