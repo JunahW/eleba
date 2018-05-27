@@ -24,7 +24,7 @@ public class TestUserDao {
 		User user=new User();
 		user.setUid("003");
 		user.setUsername("翁俊河");
-		userMapper.insertUser(user);
+		//userMapper.insertUser(user);
 		
 	}
 	

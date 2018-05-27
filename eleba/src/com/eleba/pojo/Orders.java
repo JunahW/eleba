@@ -1,102 +1,75 @@
 package com.eleba.pojo;
 
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 
-public class Orders implements Serializable {
+public class Orders {
+    private String oid;
 
-	/**
-	 * `oid` varchar(32) NOT NULL COMMENT '订单号', 
-	 * `ordertime` datetime DEFAULT NULLCOMMENT '订单时间', 
-	 * `total` double DEFAULT NULL COMMENT '总计', 
-	 * `state` int(11) DEFAULT NULL COMMENT '状态', 
-	 * `address` int(11) DEFAULT NULL COMMENT '地址',
-	 * `name` varchar(20) DEFAULT NULL COMMENT '名字', 
-	 * `uid` varchar(32) DEFAULT NULL COMMENT '用户id'
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String oid;
-	private Date ordertime;
-	private Double total;
-	
-	private Integer state;
-	private String address;
-	private String name;
-	
-	private User user;
-	private ArrayList<OrderItem> oList=new ArrayList<>();
-	
-	public Orders() {
-		super();
-	}
+    private Date ordertime;
 
-	public String getOid() {
-		return oid;
-	}
+    private Double total;
 
-	public void setOid(String oid) {
-		this.oid = oid;
-	}
+    private Integer state;
 
-	public Date getOrdertime() {
-		return ordertime;
-	}
+    private Integer address;
 
-	public void setOrdertime(Date ordertime) {
-		this.ordertime = ordertime;
-	}
+    private String name;
 
-	public Double getTotal() {
-		return total;
-	}
+    private String uid;
 
-	public void setTotal(Double total) {
-		this.total = total;
-	}
+    public String getOid() {
+        return oid;
+    }
 
-	public Integer getState() {
-		return state;
-	}
+    public void setOid(String oid) {
+        this.oid = oid == null ? null : oid.trim();
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
+    public Date getOrdertime() {
+        return ordertime;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setOrdertime(Date ordertime) {
+        this.ordertime = ordertime;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public Double getTotal() {
+        return total;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getState() {
+        return state;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public Integer getAddress() {
+        return address;
+    }
 
-	public ArrayList<OrderItem> getoList() {
-		return oList;
-	}
+    public void setAddress(Integer address) {
+        this.address = address;
+    }
 
-	public void setoList(ArrayList<OrderItem> oList) {
-		this.oList = oList;
-	}
-	
-	
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid == null ? null : uid.trim();
+    }
 }
