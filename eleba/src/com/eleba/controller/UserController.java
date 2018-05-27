@@ -17,6 +17,8 @@ public class UserController {
 	
 	@RequestMapping(value="/index")
 	public String index() {
+		
+		System.out.println();
 		return "admin/index";
 	}
 	
