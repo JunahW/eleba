@@ -5,8 +5,8 @@
 <head>
 <title>网上商城管理中心</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="${pageContext.request.contextPath }/general.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath }/main.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath }/css/general.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 body {
@@ -16,7 +16,7 @@ body {
 </head>
 <body style="background: #278296">
 <center></center>
-<form method="post" action="${pageContext.request.contextPath}/home.action" target="_parent" name='theForm' onsubmit="return validate()">
+<form method="post" action="${pageContext.request.contextPath }/jsp/admin/home.jsp" target="_parent" name='theForm' onsubmit="return validate()">
   <table cellspacing="0" cellpadding="0" style="margin-top: 100px" align="center">
   <tr>
     <td style="padding-left: 50px">

@@ -3,18 +3,21 @@
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<LINK href="${pageContext.request.contextPath}/Style1.css" type="text/css" rel="stylesheet">
+		<LINK href="${pageContext.request.contextPath}/css/Style1.css" type="text/css" rel="stylesheet">
 	</HEAD>
 	
 	<body>
 		<!--  -->
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/add.action" method="post" enctype="multipart/form-data">
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminProduct_update.action" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="pid" value="">
+			
+			
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<strong><STRONG>添加商品</STRONG>
+						<strong><STRONG>编辑商品</STRONG>
 						</strong>
 					</td>
 				</tr>
@@ -30,6 +33,7 @@
 						是否热门：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
+						
 						<select name="is_hot">
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -63,8 +67,10 @@
 						所属分类：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<select name="cid">
+						<select name="categorySecond.csid">
+							
 								<option value=""></option>
+							
 						</select>
 					</td>
 				</tr>

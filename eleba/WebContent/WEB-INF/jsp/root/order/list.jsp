@@ -72,26 +72,23 @@
 								<tr
 									style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
-									<td align="center" width="6%">
-										订单号
-									</td>
-									<td align="center" width="8%">
-										订单时间
-									</td>
-									<td align="center" width="8%">
-										总计
-									</td>
-									<td align="center" width="8%">
-										订单状态
-									</td>
-									<td align="center" width="18%">
-										订单地址
-									</td>
-									<td align="center" width="12%">
-										订单名称
+									<td align="center" width="10%">
+										序号
 									</td>
 									<td align="center" width="10%">
-										用户号
+										订单编号
+									</td>
+									<td align="center" width="10%">
+										订单金额
+									</td>
+									<td align="center" width="10%">
+										收货人
+									</td>
+									<td align="center" width="10%">
+										订单状态
+									</td>
+									<td align="center" width="50%">
+										订单详情
 									</td>
 								</tr>
 									<s:iterator var="o" value="pageBean.list" status="status">
