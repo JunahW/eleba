@@ -42,12 +42,12 @@
 							<tr
 								style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
-								<td align="center" width="16%">序号</td>
-								<td align="center" width="15%">商品图片</td>
-								<td align="center" width="15%">商品名称</td>
-								<td align="center" width="15%">商品描述</td>
-								<td align="center" width="15%">商品价格</td>
-								<td align="center" width="15%">状态</td>
+								<td align="center" width="15%">序号</td>
+								<td align="center" width="14%">商品图片</td>
+								<td align="center" width="14%">商品名称</td>
+								<td align="center" width="14%">商品描述</td>
+								<td align="center" width="14%">商品价格</td>
+								<td align="center" width="14%">状态</td>
 								<td width="7%" align="center">编辑</td>
 								<td width="7%" align="center">删除</td>
 							</tr>
@@ -55,25 +55,25 @@
 								<tr onmouseover="this.style.backgroundColor = 'white'"
 									onmouseout="this.style.backgroundColor = '#F5FAFE';">
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="16%">${vs.count }</td>
+										width="15%">${vs.count }</td>
 
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="15%"><img width="40" height="45"
+										width="14%"><img width="40" height="45"
 										src="${ pageContext.request.contextPath }/${p.pimage}">
 									</td>
 
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="15%">${p.pname }</td>
+										width="14%">${p.pname }</td>
 
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="15%">${p.pdesc }</td>
+										width="14%">${p.pdesc }</td>
 
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="15%">${p.price }</td>
+										width="14%">${p.price }</td>
 
 
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="15%"><c:if test="${p.pflag==1 }">是</c:if> <c:if
+										width="14%"><c:if test="${p.pflag==1 }">是</c:if> <c:if
 											test="${p.pflag!=1 }">否</c:if></td>
 
 									<td align="center" style="HEIGHT: 22px"><a

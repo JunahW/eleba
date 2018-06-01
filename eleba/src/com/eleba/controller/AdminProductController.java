@@ -15,7 +15,11 @@ import com.eleba.pojo.Product;
 import com.eleba.service.AdminProductService;
 import com.eleba.utils.UUIDUtils;
 import com.github.pagehelper.PageHelper;
-
+/**
+ * 商家管理用户模块
+ * @author asus2016
+ *
+ */
 @Controller
 @RequestMapping(value = "/admin/product")
 public class AdminProductController {
@@ -61,7 +65,18 @@ public class AdminProductController {
 		}
 
 		adminProductService.addProduct(product);
-
+		return "forward:/admin/product/list.action";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(String pid) {
+		adminProductService.deleteProduct(pid);
+		return "forward:/admin/product/list.action";
+	}
+	
+	@RequestMapping(value="/update")
+	public String update(Product product) {
+		adminProductService.updateProduct(product);
 		return "forward:/admin/product/list.action";
 	}
 

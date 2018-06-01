@@ -12,10 +12,10 @@ import com.eleba.service.AdminProductService;
 
 @Service
 public class AdminProductServiceImpl implements AdminProductService {
-	
+
 	@Autowired
 	private ProductMapper productMapper;
-	
+
 	@Override
 	public int addProduct(Product product) {
 		return productMapper.insert(product);
@@ -23,8 +23,20 @@ public class AdminProductServiceImpl implements AdminProductService {
 
 	@Override
 	public List<Product> listProduct() {
-		ProductExample example=new ProductExample();
+		ProductExample example = new ProductExample();
 		return productMapper.selectByExample(example);
+	}
+
+	@Override
+	public void deleteProduct(String pid) {
+		productMapper.deleteByPrimaryKey(pid);
+
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		productMapper.updateByExample(product, new ProductExample());
+
 	}
 
 }
