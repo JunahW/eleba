@@ -25,9 +25,9 @@
 		d = new dTree('d');
 		d.add('01',-1,'系统菜单树');
 		d.add('0102','01','商品管理');
-		d.add('010201','0102','商品管理','${pageContext.request.contextPath}/adminProduct_findAll.action?page=1','','mainFrame');
+		d.add('010201','0102','商品管理','${pageContext.request.contextPath}/admin/product/list.action','','mainFrame');
 		d.add('0103','01','订单管理');
-		d.add('010301','0103','订单管理','${pageContext.request.contextPath}/adminOrder_findAll.action?page=1','','mainFrame');
+		d.add('010301','0103','订单管理','${pageContext.request.contextPath}/admin/order/list.action','','mainFrame');
 		document.write(d);
 		
 	</script>
