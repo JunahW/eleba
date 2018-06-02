@@ -85,7 +85,7 @@ CREATE TABLE `orders` (
   `oid` varchar(32) NOT NULL COMMENT '订单号',
   `ordertime` datetime DEFAULT NULL COMMENT '订单时间',
   `total` double DEFAULT NULL COMMENT '总计',
-  `state` int(11) DEFAULT NULL COMMENT '状态',
+  `state` int(11) DEFAULT NULL COMMENT '地址',
   `address` int(11) DEFAULT NULL COMMENT '地址',
   `name` varchar(20) DEFAULT NULL COMMENT '名字',
   `uid` varchar(32) DEFAULT NULL COMMENT '用户id',

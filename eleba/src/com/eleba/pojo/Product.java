@@ -82,4 +82,11 @@ public class Product {
     public void setBid(String bid) {
         this.bid = bid == null ? null : bid.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price + ", pimage=" + pimage + ", pdate="
+				+ pdate + ", pdesc=" + pdesc + ", pflag=" + pflag + ", bid=" + bid + "]";
+	}
+    
 }

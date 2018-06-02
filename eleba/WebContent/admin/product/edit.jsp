@@ -22,7 +22,7 @@
 					</td>
 				</tr>
 
-				<tr>
+			<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
 						商品名称：
 					</td>
@@ -30,10 +30,9 @@
 						<input type="text" name="pname" value="" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						是否热门：
+						是否上架：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						
 						<select name="is_hot">
 							<option value="1">是</option>
 							<option value="0">否</option>
@@ -42,17 +41,12 @@
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						市场价格：
+						商品价格：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						<input type="text" name="market_price" value="" id="userAction_save_do_logonName" class="bg"/>
 					</td>
-					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						商城价格：
-					</td>
-					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="shop_price" value="" id="userAction_save_do_logonName" class="bg"/>
-					</td>
+					
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
@@ -62,16 +56,13 @@
 						<input type="file" name="upload" />
 					</td>
 				</tr>
+				
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						所属分类：
+						商品描述：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<select name="categorySecond.csid">
-							
-								<option value=""></option>
-							
-						</select>
+						<textarea name="pdesc" rows="5" cols="30"></textarea>
 					</td>
 				</tr>
 				<tr>
