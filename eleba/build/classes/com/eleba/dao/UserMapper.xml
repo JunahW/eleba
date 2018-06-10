@@ -8,7 +8,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="birthday" property="birthday"  />
     <result column="sex" property="sex" jdbcType="TINYINT" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />

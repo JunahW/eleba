@@ -6,12 +6,13 @@ import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
 
-public class CustomGlobalStrToDateConverter implements Converter<String, Date>{
+public class CustomGlobalStrToDateConverter implements Converter<String, Date> {
 
 	@Override
 	public Date convert(String source) {
 		try {
-			Date date=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(source);
+			Date date = new SimpleDateFormat("yyyy-MM-dd").parse(source);
+
 			return date;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -19,7 +20,5 @@ public class CustomGlobalStrToDateConverter implements Converter<String, Date>{
 		}
 		return null;
 	}
-
-
 
 }

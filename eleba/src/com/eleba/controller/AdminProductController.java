@@ -28,6 +28,7 @@ public class AdminProductController {
 	private AdminProductService adminProductService;
 	@Value("${product_pic}")
 	private String productPicPath;
+	
 
 	@RequestMapping(value = "list")
 	public ModelAndView listProduct(ModelAndView mv, @RequestParam(required = true, defaultValue = "1") Integer page,

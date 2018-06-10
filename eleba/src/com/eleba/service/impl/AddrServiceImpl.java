@@ -3,12 +3,14 @@ package com.eleba.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.eleba.dao.AddrMapper;
 import com.eleba.pojo.Addr;
 import com.eleba.pojo.AddrExample;
 import com.eleba.service.AddrService;
 
+@Service
 public class AddrServiceImpl implements AddrService{
 
 	@Autowired

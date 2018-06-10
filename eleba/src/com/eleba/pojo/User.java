@@ -122,4 +122,13 @@ public class User {
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl == null ? null : imgurl.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", name=" + name + ", email="
+				+ email + ", telephone=" + telephone + ", birthday=" + birthday + ", sex=" + sex + ", state=" + state
+				+ ", code=" + code + ", type=" + type + ", imgurl=" + imgurl + "]";
+	}
+    
+    
 }
