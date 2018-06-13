@@ -37,11 +37,23 @@
 									<td align="center" width="17%">
 										真实姓名
 									</td>
-									<td width="7%" align="center">
-										编辑
+									<td align="center" width="17%">
+										邮箱
+									</td>
+									<td align="center" width="17%">
+										电话
+									</td>
+									<td align="center" width="17%">
+										生日
+									</td>
+									<td align="center" width="17%">
+										性别
 									</td>
 									<td width="7%" align="center">
-										删除
+										激活
+									</td>
+									<td width="7%" align="center">
+										冻结
 									</td>
 								</tr>
 									<s:iterator var="u" value="pageBean.list" status="status">

@@ -57,7 +57,22 @@
 						<input type="text" name="phone" value="<s:property value="model.phone"/>" id="userAction_save_do_logonName" class="bg"/>
 						</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						地址：
+						生日：
+					</td>
+					<td class="ta_01" bgColor="#ffffff">
+						<input type="text" name="addr" value="<s:property value="model.addr"/>" id="userAction_save_do_logonName" class="bg"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
+						性别：
+					</td>
+					<td class="ta_01" bgColor="#ffffff">
+						<input type="text" name="phone" value="<s:property value="model.phone"/>" id="userAction_save_do_logonName" class="bg"/>
+						</td>
+					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
+						图片路径：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						<input type="text" name="addr" value="<s:property value="model.addr"/>" id="userAction_save_do_logonName" class="bg"/>

@@ -118,5 +118,25 @@ public class UserController {
 		return "";
 
 	}
-
+	
+	@RequestMapping(value = "find")
+	public String selectUser(User user){
+		 userService.selectUser(user);
+		 return "redirect:index";
+	}
+	
+	@RequestMapping(value = "update")
+	public String updateUser(User user){
+		 userService.updateUser(user);
+		 return "redirect:index";
+	}
+	
+	@RequestMapping(value = "delete")
+	public String deleteUser(User user){
+		 userService.deleteUser(user);
+		 return "redirect:index";
+	}
+	
+	
+	
 }

@@ -66,19 +66,19 @@ public class AdminProductController {
 		}
 
 		adminProductService.addProduct(product);
-		return "forward:/admin/product/list.action";
+		return "/admin/product/list";
 	}
 	
 	@RequestMapping(value="/delete")
 	public String delete(String pid) {
 		adminProductService.deleteProduct(pid);
-		return "forward:/admin/product/list.action";
+		return "/admin/product/list";
 	}
 	
 	@RequestMapping(value="/update")
 	public String update(Product product) {
 		adminProductService.updateProduct(product);
-		return "forward:/admin/product/list.action";
+		return "/admin/product/list";
 	}
 
 }
