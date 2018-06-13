@@ -1,6 +1,8 @@
 package com.eleba.pojo;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Orders {
     private String oid;
@@ -11,11 +13,11 @@ public class Orders {
 
     private Integer state;
 
-    private Integer address;
+    private Addr addr;
 
-    private String name;
-
-    private String uid;
+    private User user;
+    
+    List<Orderitem> orderitems=new LinkedList<>();
 
     public String getOid() {
         return oid;
@@ -49,27 +51,29 @@ public class Orders {
         this.state = state;
     }
 
-    public Integer getAddress() {
-        return address;
-    }
+	public Addr getAddr() {
+		return addr;
+	}
 
-    public void setAddress(Integer address) {
-        this.address = address;
-    }
+	public void setAddr(Addr addr) {
+		this.addr = addr;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public String getUid() {
-        return uid;
-    }
+	public List<Orderitem> getOrderitems() {
+		return orderitems;
+	}
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
-    }
+	public void setOrderitems(List<Orderitem> orderitems) {
+		this.orderitems = orderitems;
+	}
+
+    
 }

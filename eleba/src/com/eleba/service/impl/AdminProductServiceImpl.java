@@ -39,4 +39,9 @@ public class AdminProductServiceImpl implements AdminProductService {
 
 	}
 
+	@Override
+	public Product selectProductById(String pid) {
+		return productMapper.selectByPrimaryKey(pid);
+	}
+
 }
