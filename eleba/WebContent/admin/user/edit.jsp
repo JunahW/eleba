@@ -7,7 +7,7 @@
 	</HEAD>
 	
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/userAdmin_update.action" method="post" >
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/user/list.action" method="post" >
 			<input type="hidden" name="uid" value="<s:property value="model.uid"/>" />
 			<input type="hidden" name="state" value="<s:property value="model.state"/>" />
 			<input type="hidden" name="code" value="<s:property value="model.code"/>" />
@@ -29,7 +29,7 @@
 						<input type="text" name="username" value="<s:property value="model.username"/>" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						密码：
+						用户密码：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						<input type="text" name="password" value="<s:property value="model.password"/>" id="userAction_save_do_logonName" class="bg"/>
@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						真实姓名：
+						真实名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						<input type="text" name="name" value="<s:property value="model.name"/>" id="userAction_save_do_logonName" class="bg"/>
@@ -57,7 +57,7 @@
 						<input type="text" name="phone" value="<s:property value="model.phone"/>" id="userAction_save_do_logonName" class="bg"/>
 						</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						地址：
+						生日：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						<input type="text" name="addr" value="<s:property value="model.addr"/>" id="userAction_save_do_logonName" class="bg"/>

@@ -27,17 +27,7 @@
 						<input type="text" name="pname" value="" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 				</tr>
-				<tr>
-					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						是否上架：
-					</td>
-					<td class="ta_01" bgColor="#ffffff">
-						<select name="pflag">
-							<option value="1">是</option>
-							<option value="0">否</option>
-						</select>
-					</td>
-				</tr>
+				
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
 						商品价格：
@@ -47,6 +37,8 @@
 					</td>
 					
 				</tr>
+				
+				
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
 						商品图片：
@@ -54,6 +46,16 @@
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
 						<input type="file" name="pfile" />
 					</td>
+				</tr>
+				
+				<tr>
+					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
+						商品日期：
+					</td>
+					<td class="ta_01" bgColor="#ffffff">
+						<input type="text" name="price" value="" id="userAction_save_do_logonName" class="bg"/>
+					</td>
+					
 				</tr>
 				
 				<tr>

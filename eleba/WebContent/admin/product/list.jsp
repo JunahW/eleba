@@ -48,8 +48,8 @@
 								<td align="center" width="14%">商品描述</td>
 								<td align="center" width="14%">商品价格</td>
 								<td align="center" width="14%">状态</td>
+								<td width="7%" align="center">激活</td>
 								<td width="7%" align="center">编辑</td>
-								<td width="7%" align="center">删除</td>
 							</tr>
 							<c:forEach items="${listProduct }" var="p" varStatus="vs">
 								<tr onmouseover="this.style.backgroundColor = 'white'"

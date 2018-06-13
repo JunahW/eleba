@@ -51,13 +51,13 @@
 										商品价格
 									</td>
 									<td align="center" width="17%">
-										是否热门
+										商品日期
 									</td>
 									<td width="7%" align="center">
-										编辑
+										激活
 									</td>
 									<td width="7%" align="center">
-										删除
+										冻结
 									</td>
 								</tr>
 								<c:forEach items="${list }" var="p" varStatus="vs">

@@ -9,7 +9,7 @@
 	</HEAD>
 	<body>
 		<br>
-		<form id="Form1" name="Form1" action="${pageContext.request.contextPath}/user/list.jsp" method="post">
+		<form id="Form1" name="Form1" action="${pageContext.request.contextPath}/user/update.action" method="post">
 			<table cellSpacing="1" cellPadding="0" width="100%" align="center" bgColor="#f5fafe" border="0">
 				<TBODY>
 					<tr>
@@ -28,20 +28,35 @@
 								<tr
 									style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
-									<td align="center" width="18%">
-										序号
-									</td>
-									<td align="center" width="17%">
+									<td align="center" width="13%">
 										用户名称
 									</td>
-									<td align="center" width="17%">
-										真实姓名
+									<td align="center" width="10%">
+										用户密码
+									</td>
+									<td align="center" width="13%">
+										真实名称
+									</td>
+									<td align="center" width="10%">
+										邮箱
+									</td>
+									<td align="center" width="10%">
+										电话
+									</td>
+									<td align="center" width="10%">
+										生日
+									</td>
+									<td align="center" width="5%">
+										性别
+									</td>
+									<td align="center" width="5%">
+										状态
 									</td>
 									<td width="7%" align="center">
-										编辑
+										用户类型
 									</td>
 									<td width="7%" align="center">
-										删除
+										图片路径
 									</td>
 								</tr>
 									<s:iterator var="u" value="pageBean.list" status="status">
