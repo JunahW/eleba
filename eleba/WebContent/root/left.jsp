@@ -25,11 +25,12 @@
 		d = new dTree('d');
 		d.add('01',-1,'系统菜单树');
 		d.add('0101','01','用户管理','','','mainFrame');
-		d.add('010101','0101','用户管理','${pageContext.request.contextPath}/userAdmin_findAll.action?page=1','','mainFrame');
-		d.add('0102','01','用户管理','','','mainFrame');
-		d.add('010201','0102','用户管理','${pageContext.request.contextPath}/userAdmin_findAll.action?page=1','','mainFrame');
-		d.add('0103','01','分类管理','','','mainFrame');
-		d.add('010301','0103','分类管理','${pageContext.request.contextPath}/adminCategoryServlet?method=findAll','','mainFrame');
+		d.add('010101','0101','用户管理','${pageContext.request.contextPath}/root/user/list.action?currPage=1','','mainFrame');
+		d.add('0102','01','商家管理','','','mainFrame');
+		d.add('010201','0102','商家管理','${pageContext.request.contextPath}/root/business/list.action?currPage=1','','mainFrame');
+		d.add('010202','0102','审核商家','${pageContext.request.contextPath}/root/business/listActiveUsers.action?currPage=1','','mainFrame');
+		//d.add('0103','01','分类管理','','','mainFrame');
+		//d.add('010301','0103','分类管理','${pageContext.request.contextPath}/adminCategoryServlet?method=findAll','','mainFrame');
 		document.write(d);
 		
 	</script>

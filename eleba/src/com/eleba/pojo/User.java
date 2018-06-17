@@ -1,9 +1,15 @@
 package com.eleba.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
-    private String uid;
+public class User implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String uid;
 
     private String username;
 

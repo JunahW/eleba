@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 		user.setUid(UUIDUtils.getId());
 		user.setCode(UUIDUtils.getCode());
 		try {
-			MailUtils.sendMail(user.getEmail(),user.getCode());
+			MailUtils.sendMail(user.getEmail(), user.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,6 +45,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> selectUser(User user) {
+		/**
+		 * 密码加密，开发阶段注释掉
+		 */
+		//user.setPassword(MD5Utils.md5(user.getPassword()));
 		UserExample userExample = new UserExample();
 		Criteria criteria = userExample.createCriteria();
 		criteria.andNameEqualTo(user.getName());
@@ -88,7 +92,5 @@ public class UserServiceImpl implements UserService {
 		activeUser.setState(1);
 		return userMapper.updateByExampleSelective(activeUser, example);
 	}
-
-	
 
 }

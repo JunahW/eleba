@@ -3,20 +3,23 @@ package com.eleba.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.eleba.bean.PageBean;
 import com.eleba.pojo.Product;
 import com.eleba.service.AdminProductService;
 import com.eleba.utils.UUIDUtils;
 import com.github.pagehelper.PageHelper;
+
 /**
  * 商家管理用户模块
+ * 
  * @author asus2016
  *
  */
@@ -28,18 +31,20 @@ public class AdminProductController {
 	private AdminProductService adminProductService;
 	@Value("${product_pic}")
 	private String productPicPath;
-	
 
 	@RequestMapping(value = "list")
-	public ModelAndView listProduct(ModelAndView mv, @RequestParam(required = true, defaultValue = "1") Integer page,
-			@RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-		PageHelper.startPage(1, 10);
-		List<Product> listProduct = adminProductService.listProduct();
-		mv.addObject("listProduct", listProduct);
-		// mv.addObject("page", p);
-		mv.setViewName("admin/product/list");
+	public String listProduct(Model model, PageBean<Product> pageBean, Product product) {
+		PageHelper.startPage(pageBean.getCurrPage(), pageBean.getPageSize());
+		List<Product> listProduct = adminProductService.listProduct(product);
+		int totalCount = adminProductService.getTotalCountByProduct(product);
+		pageBean.setTotalCount(totalCount);
 
-		return mv;
+		model.addAttribute("listProduct", listProduct);
+		model.addAttribute("pageBean", pageBean);
+		// 设置回显
+		model.addAttribute("product", product);
+
+		return "admin/product/list";
 	}
 
 	@RequestMapping(value = "/add")
@@ -62,20 +67,19 @@ public class AdminProductController {
 					e.printStackTrace();
 				}
 			}
-			System.out.println(newName);
 		}
 
 		adminProductService.addProduct(product);
 		return "/admin/product/list";
 	}
-	
-	@RequestMapping(value="/delete")
+
+	@RequestMapping(value = "/delete")
 	public String delete(String pid) {
 		adminProductService.deleteProduct(pid);
 		return "/admin/product/list";
 	}
-	
-	@RequestMapping(value="/update")
+
+	@RequestMapping(value = "/update")
 	public String update(Product product) {
 		adminProductService.updateProduct(product);
 		return "/admin/product/list";

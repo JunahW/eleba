@@ -18,7 +18,7 @@ public interface AdminProductService {
 	 * @parameter @return @return List<Product> @throws
 	 */
 
-	List<Product> listProduct();
+	List<Product> listProduct(Product product);
 
 	/**
 	 * 删除商品
@@ -33,6 +33,12 @@ public interface AdminProductService {
 	 * @parameter @param product @return void @throws
 	 */
 	void updateProduct(Product product);
+	
+	/**
+	 * 通过商家限制条件查找总条数 @Description: TODO @param @return @return int @throws
+	 */
+	int getTotalCountByProduct(Product product);
+
 
 	/**
 	 * 通过id查找商品

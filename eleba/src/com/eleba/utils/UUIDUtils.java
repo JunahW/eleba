@@ -1,25 +1,45 @@
 package com.eleba.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class UUIDUtils {
 	/**
-	 * 闅忔満鐢熸垚id
+	 * 获取uuid
+	 * 
 	 * @return
 	 */
-	public static String getId(){
+	public static String getId() {
 		return UUID.randomUUID().toString().replace("-", "").toUpperCase();
 	}
-	
+
 	/**
-	 * 鐢熸垚闅忔満鐮�
+	 * 获取激活码
+	 * 
 	 * @return
 	 */
-	public static String getCode(){
+	public static String getCode() {
 		return getId();
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(getId());
+
+	/**
+	 * 获取订单号
+	 * 
+	 * @return
+	 */
+	public static String getOrderId() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		String orderId = format.format(new Date());
+		Random random = new Random();
+		StringBuilder sb=new StringBuilder(orderId);
+		sb.append(random.nextInt(10));
+		sb.append(random.nextInt(10));
+		sb.append(random.nextInt(10));
+		return sb.toString();
 	}
+	
 }

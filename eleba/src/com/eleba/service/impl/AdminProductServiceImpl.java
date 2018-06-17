@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.eleba.dao.ProductMapper;
 import com.eleba.pojo.Product;
 import com.eleba.pojo.ProductExample;
+import com.eleba.pojo.ProductExample.Criteria;
 import com.eleba.service.AdminProductService;
 
 @Service
@@ -22,8 +23,13 @@ public class AdminProductServiceImpl implements AdminProductService {
 	}
 
 	@Override
-	public List<Product> listProduct() {
+	public List<Product> listProduct(Product product) {
 		ProductExample example = new ProductExample();
+		Criteria criteria = example.createCriteria();
+		if (null != product.getPname() && !"".equals(product.getPname())) {
+			criteria.andPnameLike("%" + product.getPname() + "%");
+		}
+
 		return productMapper.selectByExample(example);
 	}
 
@@ -42,6 +48,17 @@ public class AdminProductServiceImpl implements AdminProductService {
 	@Override
 	public Product selectProductById(String pid) {
 		return productMapper.selectByPrimaryKey(pid);
+	}
+
+	@Override
+	public int getTotalCountByProduct(Product product) {
+
+		ProductExample example = new ProductExample();
+		Criteria criteria = example.createCriteria();
+		if (null != product.getPname() && !"".equals(product.getPname())) {
+			criteria.andPnameLike("%" + product.getPname() + "%");
+		}
+		return productMapper.countByExample(example);
 	}
 
 }

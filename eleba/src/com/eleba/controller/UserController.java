@@ -5,21 +5,19 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.eleba.pojo.User;
 import com.eleba.service.UserService;
+import com.eleba.utils.Constants;
+import com.eleba.utils.SessionProvider;
 import com.eleba.utils.UUIDUtils;
-
-import sun.print.resources.serviceui;
 
 /**
  * 这是普通用户管理模块
@@ -37,7 +35,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private SessionProvider sessionProvider;
+
 	/**
+	 * 用户注册
 	 * 
 	 * @param user
 	 * @param ufile
@@ -61,44 +63,28 @@ public class UserController {
 					e.printStackTrace();
 				}
 			}
-			System.out.println(newName);
 		}
-
-		System.out.println(user);
-		userService.addUser(user);
-
 		return "/index";
-	}
-
-	// 登陆页面
-	@RequestMapping("/login")
-	public String login(Model model) throws Exception {
-
-		return "index";
 	}
 
 	// 登陆提交
 	// userid：用户账号，pwd：密码
-	@RequestMapping("/loginsubmit")
-	public String loginsubmit(HttpSession session, User user, Model model) throws Exception {
-		List<User> users = userService.checkLogin(user);
-
+	@RequestMapping(value = "login")
+	public String login(User user, Model model, HttpServletRequest request, HttpServletResponse response) {
+		List<User> users = userService.selectUser(user);
 		if (null != users && users.size() >= 1) {
-			user = users.get(0);
-			if (user.getState() == 1) {
-				session.setAttribute("activeUser", user);
-				System.out.println("11111");
-				return "home";
+			User existUser = users.get(0);
+			if (existUser.getType() == 1) {
+				sessionProvider.setAttribute(request, response, Constants.BUYER_SESSION, existUser);
+				return "redirect:/user/home.jsp";
 			} else {
-
+				model.addAttribute("msg", "对不起，您没有该权限！");
 			}
 		} else {
-			model.addAttribute("msg", "");
+			model.addAttribute("msg", "您的账号和密码不匹配");
 		}
-
 		model.addAttribute("user", user);
-		// 向session记录用户身份信息
-		return "index";
+		return "/user/index";
 	}
 
 	// 退出
@@ -108,7 +94,7 @@ public class UserController {
 		// session过期
 		session.invalidate();
 
-		return "/home";
+		return "redirect:/user/index.jsp";
 	}
 
 	@RequestMapping(value = "/active")
@@ -118,25 +104,23 @@ public class UserController {
 		return "";
 
 	}
-	
+
 	@RequestMapping(value = "find")
-	public String selectUser(User user){
-		 userService.selectUser(user);
-		 return "redirect:index";
+	public String selectUser(User user) {
+		userService.selectUser(user);
+		return "redirect:index";
 	}
-	
+
 	@RequestMapping(value = "update")
-	public String updateUser(User user){
-		 userService.updateUser(user);
-		 return "redirect:index";
+	public String updateUser(User user) {
+		userService.updateUser(user);
+		return "redirect:index";
 	}
-	
+
 	@RequestMapping(value = "delete")
-	public String deleteUser(User user){
-		 userService.deleteUser(user);
-		 return "redirect:index";
+	public String deleteUser(User user) {
+		userService.deleteUser(user);
+		return "redirect:index";
 	}
-	
-	
-	
+
 }

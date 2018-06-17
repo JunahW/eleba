@@ -9,7 +9,7 @@
     <result column="state" property="state" jdbcType="TINYINT" />
     <result column="statetime" property="statetime" jdbcType="TIMESTAMP" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="notice" property="notice" jdbcType="VARCHAR" />
     <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
@@ -73,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    bid, name, bossid, createtime, state, statetime, telephone, desc, notice, imgurl, 
-    sort
+    bid, name, bossid, createtime, state, statetime, telephone, description, notice, 
+    imgurl, sort
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.eleba.pojo.BusinessExample" >
     select
@@ -109,11 +109,11 @@
   <insert id="insert" parameterType="com.eleba.pojo.Business" >
     insert into business (bid, name, bossid, 
       createtime, state, statetime, 
-      telephone, desc, notice, 
+      telephone, description, notice, 
       imgurl, sort)
     values (#{bid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{bossid,jdbcType=VARCHAR}, 
       #{createtime,jdbcType=TIMESTAMP}, #{state,jdbcType=TINYINT}, #{statetime,jdbcType=TIMESTAMP}, 
-      #{telephone,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{notice,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{notice,jdbcType=VARCHAR}, 
       #{imgurl,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.eleba.pojo.Business" >
@@ -140,8 +140,8 @@
       <if test="telephone != null" >
         telephone,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="description != null" >
+        description,
       </if>
       <if test="notice != null" >
         notice,
@@ -175,8 +175,8 @@
       <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="notice != null" >
         #{notice,jdbcType=VARCHAR},
@@ -219,8 +219,8 @@
       <if test="record.telephone != null" >
         telephone = #{record.telephone,jdbcType=VARCHAR},
       </if>
-      <if test="record.desc != null" >
-        desc = #{record.desc,jdbcType=VARCHAR},
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.notice != null" >
         notice = #{record.notice,jdbcType=VARCHAR},
@@ -245,7 +245,7 @@
       state = #{record.state,jdbcType=TINYINT},
       statetime = #{record.statetime,jdbcType=TIMESTAMP},
       telephone = #{record.telephone,jdbcType=VARCHAR},
-      desc = #{record.desc,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       notice = #{record.notice,jdbcType=VARCHAR},
       imgurl = #{record.imgurl,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER}
@@ -274,8 +274,8 @@
       <if test="telephone != null" >
         telephone = #{telephone,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="notice != null" >
         notice = #{notice,jdbcType=VARCHAR},
@@ -297,7 +297,7 @@
       state = #{state,jdbcType=TINYINT},
       statetime = #{statetime,jdbcType=TIMESTAMP},
       telephone = #{telephone,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       notice = #{notice,jdbcType=VARCHAR},
       imgurl = #{imgurl,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER}
