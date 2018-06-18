@@ -41,7 +41,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 
 	@Override
 	public void updateProduct(Product product) {
-		productMapper.updateByExample(product, new ProductExample());
+		productMapper.updateByPrimaryKeySelective(product);
 
 	}
 

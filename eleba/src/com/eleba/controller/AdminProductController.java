@@ -76,13 +76,37 @@ public class AdminProductController {
 	@RequestMapping(value = "/delete")
 	public String delete(String pid) {
 		adminProductService.deleteProduct(pid);
-		return "/admin/product/list";
+		return "redirect:/admin/product/list.action";
 	}
 
 	@RequestMapping(value = "/update")
-	public String update(Product product) {
+	public String update(Product product, MultipartFile pfile) {
+		String picName = pfile.getOriginalFilename();
+		if (null != picName && picName != "") {
+			// 上传图片
+			String newName = UUIDUtils.getId() + picName.substring(picName.indexOf("."));
+			product.setPimage(newName);
+			File picFile = new File(productPicPath, newName);
+			if (!picFile.exists()) {
+				try {
+					picFile.createNewFile();
+					pfile.transferTo(picFile);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		adminProductService.updateProduct(product);
-		return "/admin/product/list";
+		return "redirect:/admin/product/list.action";
+	}
+
+	@RequestMapping(value = "/selectProductById")
+	public String selectProductById(String pid, Model model) {
+		Product product = adminProductService.selectProductById(pid);
+		model.addAttribute("product", product);
+
+		return "/admin/product/edit";
+
 	}
 
 }

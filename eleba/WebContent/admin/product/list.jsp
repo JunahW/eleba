@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <HTML>
 <HEAD>
@@ -48,48 +49,53 @@
 							style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
 							<td align="center" width="5%">序号</td>
-							<td align="center" width="10%">商品图片</td>
-							<td align="center" width="10%">商品名称</td>
-							<td align="center" width="10%">商品描述</td>
-							<td align="center" width="10%">商品价格</td>
-							<td align="center" width="10%">状态</td>
-							<td width="3%" align="center">激活</td>
-							<td width="3%" align="center">编辑</td>
+							<td align="center" width="14%">商品图片</td>
+							<td align="center" width="14%">商品名称</td>
+							
+							<td align="center" width="14%">商品描述</td>
+							<td align="center" width="14%">商品价格</td>
+							<td align="center" width="14%">上架时间</td>
+							
+							<td align="center" width="14%">状态</td>
+							<td width="5%" align="center">删除</td>
+							<td width="5%" align="center">编辑</td>
 						</tr>
-						<c:forEach items="${listProduct }" var="p" varStatus="vs">
+						<c:forEach items="${listProduct}" var="p" varStatus="vs">
 							<tr onmouseover="this.style.backgroundColor = 'white'"
 								onmouseout="this.style.backgroundColor = '#F5FAFE';">
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="5%">${vs.count }</td>
 
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%"><img width="40" height="45"
+									width="14%"><img width="40" height="45"
 									src="${ pageContext.request.contextPath }/${p.pimage}"></td>
 
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%">${p.pname }</td>
+									width="14%">${p.pname }</td>
 
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%">${p.pdesc }</td>
+									width="14%">${p.pdesc }</td>
 
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%">${p.price }</td>
-
+									width="14%">${p.price }</td>
 
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%"><c:if test="${p.pflag==1 }">是</c:if> <c:if
-										test="${p.pflag!=1 }">否</c:if></td>
+									width="14%"><fmt:formatDate value="${p.pdate }"
+										pattern="yyyy-MM-dd hh:mm:ss" /></td>
 
-								<td align="center" style="HEIGHT: 22px"><a
-									href="${ pageContext.request.contextPath }/admin/product/edit.action?pid=${p.pid}">
-										<img
-										src="${pageContext.request.contextPath}/images/i_edit.gif"
-										border="0" style="CURSOR: hand">
-								</a></td>
-
-								<td align="center" style="HEIGHT: 22px"><a
+								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+									width="14%"><c:if test="${p.pflag==1 }">上架</c:if> <c:if
+										test="${p.pflag!=1 }">下架</c:if></td>
+								<td align="center" style="HEIGHT: 22px" width="5%"><a
 									href="${ pageContext.request.contextPath }/admin/product/delete.action?pid=${p.pid}">
 										<img src="${pageContext.request.contextPath}/images/i_del.gif"
 										width="16" height="16" border="0" style="CURSOR: hand">
+								</a></td>
+
+								<td align="center" style="HEIGHT: 22px" width="5%"><a
+									href="${ pageContext.request.contextPath }/admin/product/selectProductById.action?pid=${p.pid}">
+										<img
+										src="${pageContext.request.contextPath}/images/i_edit.gif"
+										border="0" style="CURSOR: hand">
 								</a></td>
 							</tr>
 						</c:forEach>
@@ -103,7 +109,7 @@
 					<c:if test="${pageBean.currPage != 1}">
 						<a
 							href="${ pageContext.request.contextPath }/admin/product/list.action?currPage=1">首页</a>
-					</c:if> <c:if test="${pageBean.currPage >= 1}">
+					</c:if> <c:if test="${pageBean.currPage > 1}">
 						<a
 							href="${ pageContext.request.contextPath }/admin/product/list.action?currPage=${pageBean.currPage-1}">上一页</a>|
 						</c:if> <c:if test="${pageBean.currPage < pageBean.totalPage}">
