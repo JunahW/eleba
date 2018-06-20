@@ -76,4 +76,10 @@ public class Orderitem {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Orderitem [itemid=" + itemid + ", count=" + count + ", subtotal=" + subtotal + ", product=" + product
+				+ ", oid=" + oid + "]";
+	}
+
 }

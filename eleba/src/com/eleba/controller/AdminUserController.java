@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.eleba.bean.PageBean;
+import com.eleba.pojo.Business;
 import com.eleba.pojo.User;
+import com.eleba.service.AdminBusinessService;
 import com.eleba.service.AdminUserService;
 import com.eleba.utils.Constants;
 import com.eleba.utils.SessionProvider;
@@ -30,8 +32,15 @@ public class AdminUserController {
 	private AdminUserService adminUserService;
 
 	@Autowired
+	private AdminBusinessService adminBusinessService;
+
+	@Autowired
 	private SessionProvider sessionProvider;
 
+	/**
+	 * 商家登录 @Description: TODO @param @param user @param @param model @param @param
+	 * request @param @param response @param @return @return String @throws
+	 */
 	@RequestMapping(value = "/login")
 	public String login(User user, Model model, HttpServletRequest request, HttpServletResponse response) {
 		List<User> users = adminUserService.selectUserByUsernameAndPassword(user);
@@ -42,8 +51,24 @@ public class AdminUserController {
 			User existUser = users.get(0);
 			if (existUser.getType() == 1) {
 				if (existUser.getState() == 1) {
-					sessionProvider.setAttribute(request, response, Constants.ADMIN_SESSION, existUser);
-					return "redirect:/admin/home.jsp";
+					/**
+					 * 判断店铺是否激活
+					 */
+					Business business = new Business();
+					business.setBossid(user.getUid());
+					List<Business> selectBusiness = adminBusinessService.selectBusiness(business);
+					if (null != selectBusiness && selectBusiness.size() >= 1) {
+						business = selectBusiness.get(0);
+						if (business.getState() == 1) {
+							sessionProvider.setAttribute(request, response, Constants.ADMIN_SESSION, existUser);
+							return "redirect:/admin/home.jsp";
+						} else {
+							model.addAttribute("msg", "店铺审核未通过");
+						}
+					} else {
+						model.addAttribute("msg", "未申请入驻");
+					}
+
 				} else {
 					model.addAttribute("msg", "您的账户被冻结或为审核通过");
 				}
@@ -66,7 +91,6 @@ public class AdminUserController {
 
 		// session过期
 		session.invalidate();
-
 		return "redirect:/admin/index.jsp";
 	}
 }

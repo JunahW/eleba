@@ -39,4 +39,10 @@ public interface AdminBusinessService {
 	 */
 	Business selectBusinessByBid(String bid);
 
+	/**
+	 * 添加商家 @Description: TODO @param @param business @param @return @return
+	 * int @throws
+	 */
+	int addBusiness(Business business);
+
 }

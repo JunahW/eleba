@@ -1,11 +1,17 @@
 package com.eleba.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Orders {
-    private String oid;
+public class Orders implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String oid;
 
     private Date ordertime;
 
@@ -13,13 +19,23 @@ public class Orders {
 
     private Integer state;
 
-    private Addr addr;
+    private Integer address;
 
-    private User user;
+    private String name;
+
+    private String uid;
     
     List<Orderitem> orderitems=new LinkedList<>();
 
-    public String getOid() {
+    public List<Orderitem> getOrderitems() {
+		return orderitems;
+	}
+
+	public void setOrderitems(List<Orderitem> orderitems) {
+		this.orderitems = orderitems;
+	}
+
+	public String getOid() {
         return oid;
     }
 
@@ -51,29 +67,27 @@ public class Orders {
         this.state = state;
     }
 
-	public Addr getAddr() {
-		return addr;
-	}
+    public Integer getAddress() {
+        return address;
+    }
 
-	public void setAddr(Addr addr) {
-		this.addr = addr;
-	}
+    public void setAddress(Integer address) {
+        this.address = address;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public List<Orderitem> getOrderitems() {
-		return orderitems;
-	}
+    public String getUid() {
+        return uid;
+    }
 
-	public void setOrderitems(List<Orderitem> orderitems) {
-		this.orderitems = orderitems;
-	}
-
-    
+    public void setUid(String uid) {
+        this.uid = uid == null ? null : uid.trim();
+    }
 }

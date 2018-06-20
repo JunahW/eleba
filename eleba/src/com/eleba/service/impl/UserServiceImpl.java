@@ -32,11 +32,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int addUser(User user) {
-		user.setPassword(MD5Utils.md5(user.getPassword()));
+		/**
+		 * 密码加密
+		 */
+		// user.setPassword(MD5Utils.md5(user.getPassword()));
 		user.setUid(UUIDUtils.getId());
 		user.setCode(UUIDUtils.getCode());
 		try {
-			MailUtils.sendMail(user.getEmail(), user.getCode());
+			/**
+			 * 发送邮件 开发期间注释
+			 */
+			// MailUtils.sendMail(user.getEmail(), user.getCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,10 +54,10 @@ public class UserServiceImpl implements UserService {
 		/**
 		 * 密码加密，开发阶段注释掉
 		 */
-		//user.setPassword(MD5Utils.md5(user.getPassword()));
+		// user.setPassword(MD5Utils.md5(user.getPassword()));
 		UserExample userExample = new UserExample();
 		Criteria criteria = userExample.createCriteria();
-		criteria.andNameEqualTo(user.getName());
+		criteria.andNameEqualTo(user.getUsername());
 		criteria.andPasswordEqualTo(user.getPassword());
 		return userMapper.selectByExample(userExample);
 	}
@@ -91,6 +97,36 @@ public class UserServiceImpl implements UserService {
 		User activeUser = new User();
 		activeUser.setState(1);
 		return userMapper.updateByExampleSelective(activeUser, example);
+	}
+
+	@Override
+	public User selectUsersByUserName(String username) {
+
+		UserExample example = new UserExample();
+		Criteria criteria = example.createCriteria();
+
+		criteria.andUsernameEqualTo(username);
+		List<User> selectUsers = userMapper.selectByExample(example);
+		if (null != selectUsers && selectUsers.size() >= 1) {
+			User user = selectUsers.get(0);
+			return user;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public User selectUserByTelephone(String telephone) {
+		UserExample example = new UserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andTelephoneEqualTo(telephone);
+		List<User> selectUsers = userMapper.selectByExample(example);
+		if (null != selectUsers && selectUsers.size() >= 1) {
+			User user = selectUsers.get(0);
+			return user;
+		} else {
+			return null;
+		}
 	}
 
 }

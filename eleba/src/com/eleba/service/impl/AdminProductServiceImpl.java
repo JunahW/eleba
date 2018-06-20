@@ -26,6 +26,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 	public List<Product> listProduct(Product product) {
 		ProductExample example = new ProductExample();
 		Criteria criteria = example.createCriteria();
+		criteria.andBidEqualTo(product.getBid());
 		if (null != product.getPname() && !"".equals(product.getPname())) {
 			criteria.andPnameLike("%" + product.getPname() + "%");
 		}

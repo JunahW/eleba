@@ -7,12 +7,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.eleba.pojo.User;
 import com.eleba.service.UserService;
 import com.eleba.utils.Constants;
@@ -46,11 +48,24 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/register")
-	public String register(User user, MultipartFile ufile) {
+	public String register(User user, MultipartFile ufile, Model model) {
 
-		String picName = ufile.getOriginalFilename();
-		if (null != picName && picName != "") {
+		/**
+		 * 校验用户的用户名和手机号是够被注册
+		 */
+		User existUser = userService.selectUsersByUserName(user.getUsername());
+		User existUser2 = userService.selectUserByTelephone(user.getTelephone());
+		if (null != existUser) {
+			model.addAttribute("usernameMsg", "用户名已经存在");
+			return "/user/register";
+		}
+		if (null != existUser2) {
+			model.addAttribute("telephoneMsg", "手机号已经存在");
+			return "/user/register";
+		}
 
+		if (null != ufile && ufile.getOriginalFilename() != "") {
+			String picName = ufile.getOriginalFilename();
 			// 上传图片
 			String newName = UUIDUtils.getId() + picName.substring(picName.indexOf("."));
 			user.setImgurl(newName);
@@ -64,19 +79,27 @@ public class UserController {
 				}
 			}
 		}
-		return "/index";
+
+		userService.addUser(user);
+		if (user.getType() == 1) {
+			model.addAttribute("msg", "");
+			return "/user/shop_success";
+		}
+		model.addAttribute("msg", "注册成功，快去邮箱激活吧");
+		return "/user/success";
+
 	}
 
 	// 登陆提交
 	// userid：用户账号，pwd：密码
-	@RequestMapping(value = "login")
+	@RequestMapping(value = "/login")
 	public String login(User user, Model model, HttpServletRequest request, HttpServletResponse response) {
 		List<User> users = userService.selectUser(user);
 		if (null != users && users.size() >= 1) {
 			User existUser = users.get(0);
-			if (existUser.getType() == 1) {
+			if (existUser.getType() == 0) {
 				sessionProvider.setAttribute(request, response, Constants.BUYER_SESSION, existUser);
-				return "redirect:/user/home.jsp";
+				return "redirect:/business/list.action";
 			} else {
 				model.addAttribute("msg", "对不起，您没有该权限！");
 			}
@@ -84,7 +107,7 @@ public class UserController {
 			model.addAttribute("msg", "您的账号和密码不匹配");
 		}
 		model.addAttribute("user", user);
-		return "/user/index";
+		return "/user/login";
 	}
 
 	// 退出
@@ -94,15 +117,18 @@ public class UserController {
 		// session过期
 		session.invalidate();
 
-		return "redirect:/user/index.jsp";
+		return "redirect:/business/list.ation";
 	}
 
+	/**
+	 * 激活用户 @Description: TODO @param @param user @param @param
+	 * model @param @return @return String @throws
+	 */
 	@RequestMapping(value = "/active")
-	public String active(User user) {
-
+	public String active(User user, Model model) {
 		userService.activeUser(user);
-		return "";
-
+		model.addAttribute("msg", "激活成功，开启吃货模式");
+		return "/user/success";
 	}
 
 	@RequestMapping(value = "find")

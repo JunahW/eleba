@@ -25,7 +25,7 @@ public interface Constants {
 	 */
 	public static final String ROOT_SESSION = "root_session";
 	/**
-	 * 用户Session
+	 * 管理员Session
 	 */
 	public static final String ADMIN_SESSION = "admin_session";
 	/**
@@ -34,4 +34,9 @@ public interface Constants {
 	public static final String ROOT_INTERCEPT = "/eleba/root/";
 	public static final String ADMIN_INTERCEPT = "/eleba/admin/";
 	public static final String USER_INTERCEPT = "/eleba/buyer/";
+	
+	/**
+	 * 管理员Session
+	 */
+	public static final String CART_SESSION = "cart_session";
 }

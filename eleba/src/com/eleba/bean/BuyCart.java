@@ -1,5 +1,6 @@
 package com.eleba.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.eleba.pojo.Orderitem;
@@ -11,10 +12,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author asus2016
  *
  */
-public class BuyCart {
+public class BuyCart implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// 购物项 集合
-	List<Orderitem> items = new ArrayList<Orderitem>();
+	private List<Orderitem> items = new ArrayList<Orderitem>();
 
 	// 添加方法
 	public void addItem(Orderitem item) {
@@ -37,7 +42,7 @@ public class BuyCart {
 		items.remove(item);
 	}
 
-	// 商品金额
+	// 商品总金额
 	@JsonIgnore
 	public Double getProductPrice() {
 		Double result = 0.00;
@@ -58,6 +63,11 @@ public class BuyCart {
 
 	public void setItems(List<Orderitem> items) {
 		this.items = items;
+	}
+
+	@Override
+	public String toString() {
+		return "BuyCart [items=" + items + "]";
 	}
 
 }

@@ -53,7 +53,7 @@ public class AdminBusinessServiceImpl implements AdminBusinessService {
 		if (null != business.getName() && !"".equals(business.getName().trim())) {
 			criteria.andNameLike("%" + business.getName() + "%");
 		}
-		if (null!=business.getState()&&2==business.getState()) {
+		if (null != business.getState() && 2 == business.getState()) {
 			criteria.andStateEqualTo((byte) 2);
 		}
 		return businessMapper.countByExample(example);
@@ -62,6 +62,11 @@ public class AdminBusinessServiceImpl implements AdminBusinessService {
 	@Override
 	public Business selectBusinessByBid(String bid) {
 		return businessMapper.selectByPrimaryKey(bid);
+	}
+
+	@Override
+	public int addBusiness(Business business) {
+		return businessMapper.insertSelective(business);
 	}
 
 }
