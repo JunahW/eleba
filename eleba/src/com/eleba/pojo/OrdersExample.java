@@ -554,6 +554,76 @@ public class OrdersExample {
             addCriterion("uid not between", value1, value2, "uid");
             return (Criteria) this;
         }
+
+        public Criteria andBidIsNull() {
+            addCriterion("bid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidIsNotNull() {
+            addCriterion("bid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidEqualTo(String value) {
+            addCriterion("bid =", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidNotEqualTo(String value) {
+            addCriterion("bid <>", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidGreaterThan(String value) {
+            addCriterion("bid >", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidGreaterThanOrEqualTo(String value) {
+            addCriterion("bid >=", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidLessThan(String value) {
+            addCriterion("bid <", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidLessThanOrEqualTo(String value) {
+            addCriterion("bid <=", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidLike(String value) {
+            addCriterion("bid like", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidNotLike(String value) {
+            addCriterion("bid not like", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidIn(List<String> values) {
+            addCriterion("bid in", values, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidNotIn(List<String> values) {
+            addCriterion("bid not in", values, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidBetween(String value1, String value2) {
+            addCriterion("bid between", value1, value2, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidNotBetween(String value1, String value2) {
+            addCriterion("bid not between", value1, value2, "bid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -1,7 +1,14 @@
 package com.eleba.pojo;
 
-public class Town {
-    private Integer id;
+import java.io.Serializable;
+
+public class Town implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String code;
 

@@ -9,4 +9,6 @@ public interface OrdersService {
 
 	List<Orders> selectOrders(User user);
 
+	int insertOrders(Orders orders);
+
 }

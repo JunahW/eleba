@@ -1,6 +1,13 @@
 package com.eleba.pojo;
 
-public class Orderitem {
+import java.io.Serializable;
+
+public class Orderitem implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String itemid;
 
 	private Integer count;
@@ -8,6 +15,17 @@ public class Orderitem {
 	private Double subtotal;
 
 	private Product product;
+
+	private String pid;
+
+	public String getPid() {
+		this.pid=product.getPid();
+		return pid;
+	}
+
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
 
 	private String oid;
 

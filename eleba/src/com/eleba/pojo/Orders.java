@@ -6,28 +6,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Orders implements Serializable {
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private String oid;
 
-    private Date ordertime;
+	private Date ordertime;
 
-    private Double total;
+	private Double total;
 
-    private Integer state;
+	private Integer state;
 
-    private Integer address;
+	private Integer address;
 
-    private String name;
+	private String name;
 
-    private String uid;
-    
-    List<Orderitem> orderitems=new LinkedList<>();
+	private String uid;
 
-    public List<Orderitem> getOrderitems() {
+	private String bid;
+
+	List<Orderitem> orderitems = new LinkedList<>();
+
+	public List<Orderitem> getOrderitems() {
 		return orderitems;
 	}
 
@@ -36,58 +38,75 @@ public class Orders implements Serializable {
 	}
 
 	public String getOid() {
-        return oid;
-    }
+		return oid;
+	}
 
-    public void setOid(String oid) {
-        this.oid = oid == null ? null : oid.trim();
-    }
+	public void setOid(String oid) {
+		this.oid = oid == null ? null : oid.trim();
+	}
 
-    public Date getOrdertime() {
-        return ordertime;
-    }
+	public Date getOrdertime() {
+		return ordertime;
+	}
 
-    public void setOrdertime(Date ordertime) {
-        this.ordertime = ordertime;
-    }
+	public void setOrdertime(Date ordertime) {
+		this.ordertime = ordertime;
+	}
 
-    public Double getTotal() {
-        return total;
-    }
+	public Double getTotal() {
+		return total;
+	}
 
-    public void setTotal(Double total) {
-        this.total = total;
-    }
+	public void setTotal(Double total) {
+		this.total = total;
+	}
 
-    public Integer getState() {
-        return state;
-    }
+	public Integer getState() {
+		return state;
+	}
 
-    public void setState(Integer state) {
-        this.state = state;
-    }
+	public void setState(Integer state) {
+		this.state = state;
+	}
 
-    public Integer getAddress() {
-        return address;
-    }
+	public Integer getAddress() {
+		return address;
+	}
 
-    public void setAddress(Integer address) {
-        this.address = address;
-    }
+	public void setAddress(Integer address) {
+		this.address = address;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public String getUid() {
-        return uid;
-    }
+	public String getUid() {
+		return uid;
+	}
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
-    }
+	public void setUid(String uid) {
+		this.uid = uid == null ? null : uid.trim();
+	}
+
+	public String getBid() {
+		return bid;
+	}
+
+	public void setBid(String bid) {
+		this.bid = bid == null ? null : bid.trim();
+	}
+
+	@Override
+	public String toString() {
+		return "Orders [oid=" + oid + ", ordertime=" + ordertime + ", total=" + total + ", state=" + state
+				+ ", address=" + address + ", name=" + name + ", uid=" + uid + ", bid=" + bid + ", orderitems="
+				+ orderitems + "]";
+	}
+	
+	
 }

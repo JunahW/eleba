@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -94,54 +96,29 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="order_tr">
-						<td class="order_time">2018-06-13 09:48</td>
-						<td class="order_shop_image"><img class=""
-							src="image/shop.png"></td>
-						<td class="order_info">
-							<p class="order_info_food">
-								<span class="order_info_food_list">猪脚拼手撕鸡饭-中1份 / 豆干2份</span> <span
-									class="food_quantity">3</span>个菜品
-							</p>
-							<p claa="order_no">订单号: 1221142967053113415</p>
-						</td>
-						<td class="order_amount">9.00</td>
-						<td class="order_status">订单已完成</td>
-						<td class="order_detail"><a href="order_detail.html"><span
-								class="order_detail_btn">订单详情</span></a></td>
-					</tr>
-					<tr class="order_tr">
-						<td class="order_time">2018-06-13 09:48</td>
-						<td class="order_shop_image"><img class=""
-							src="image/shop.png"></td>
-						<td class="order_info">
-							<p class="order_info_food">
-								<span class="order_info_food_list">猪脚拼手撕鸡饭-中1份 / 豆干2份</span> <span
-									class="food_quantity">3</span>个菜品
-							</p>
-							<p claa="order_no">订单号: 1221142967053113415</p>
-						</td>
-						<td class="order_amount">9.00</td>
-						<td class="order_status">订单已完成</td>
-						<td class="order_detail"><a href="order_detail.html"><span
-								class="order_detail_btn">订单详情</span></a></td>
-					</tr>
-					<tr class="order_tr">
-						<td class="order_time">2018-06-13 09:48</td>
-						<td class="order_shop_image"><img class=""
-							src="image/shop.png"></td>
-						<td class="order_info">
-							<p class="order_info_food">
-								<span class="order_info_food_list">猪脚拼手撕鸡饭-中1份 / 豆干2份</span> <span
-									class="food_quantity">3</span>个菜品
-							</p>
-							<p claa="order_no">订单号: 1221142967053113415</p>
-						</td>
-						<td class="order_amount">9.00</td>
-						<td class="order_status">订单已完成</td>
-						<td class="order_detail"><a href="order_detail.html"><span
-								class="order_detail_btn">订单详情</span></a></td>
-					</tr>
+					<c:forEach items="${orderList}" var="order">
+						<tr class="order_tr">
+							<td class="order_time"><fmt:formatDate
+									value="${order.ordertime}" pattern="yyyy-MM-dd" /></td>
+							<td class="order_shop_image"><img class=""
+								src="image/shop.png"></td>
+							<td class="order_info">
+								<p class="order_info_food">
+									<span class="order_info_food_list">豆干2份 </span> <span
+										class="food_quantity"></span>菜品
+								</p>
+								<p claa="order_no">${order.oid}</p>
+							</td>
+							<td class="order_amount">${order.total}</td>
+							<td class="order_status"><c:if test="${order.state==0}">等待发货</c:if>
+								<c:if test="${order.state==1}">等待送达</c:if> <c:if
+									test="${order.state==2}">已送到，去评价</c:if></td>
+							<td class="order_detail"><a
+								href="${pageContext.request.contextPath }/buyer/detail.action?oid=${order.oid}"><span
+									class="order_detail_btn">订单详情</span></a></td>
+						</tr>
+					</c:forEach>
+
 				</tbody>
 			</table>
 		</div>

@@ -61,6 +61,7 @@ public class AdminUserController {
 						business = selectBusiness.get(0);
 						if (business.getState() == 1) {
 							sessionProvider.setAttribute(request, response, Constants.ADMIN_SESSION, existUser);
+							sessionProvider.setAttribute(request, response, Constants.SHOP_SESSION, business);
 							return "redirect:/admin/home.jsp";
 						} else {
 							model.addAttribute("msg", "店铺审核未通过");

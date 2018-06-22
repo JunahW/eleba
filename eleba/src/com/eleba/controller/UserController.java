@@ -117,7 +117,7 @@ public class UserController {
 		// session过期
 		session.invalidate();
 
-		return "redirect:/business/list.ation";
+		return "redirect:/business/list.action";
 	}
 
 	/**

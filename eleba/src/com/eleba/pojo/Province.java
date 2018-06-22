@@ -1,33 +1,35 @@
 package com.eleba.pojo;
 
-public class Province {
-    private Integer id;
+import java.io.Serializable;
 
-    private String code;
+public class Province implements Serializable {
+	private Integer id;
 
-    private String name;
+	private String code;
 
-    public Integer getId() {
-        return id;
-    }
+	private String name;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCode(String code) {
+		this.code = code == null ? null : code.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 }

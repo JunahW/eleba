@@ -1,6 +1,5 @@
 package com.eleba.controller;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -20,6 +19,7 @@ import com.eleba.pojo.Orders;
 import com.eleba.pojo.User;
 import com.eleba.service.AddrService;
 import com.eleba.service.AdminProductService;
+import com.eleba.service.OrderitemService;
 import com.eleba.service.OrdersService;
 import com.eleba.utils.Constants;
 import com.eleba.utils.SessionProvider;
@@ -27,14 +27,14 @@ import com.eleba.utils.UUIDUtils;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import sun.print.resources.serviceui_es;
-
 @RequestMapping(value = "/buyer")
 @Controller
 public class OrderController {
 
 	@Autowired
 	private SessionProvider sessionProvider;
+	@Autowired
+	private OrderitemService orderitemService;
 
 	@Autowired
 	private AdminProductService adminProductService;
@@ -86,12 +86,19 @@ public class OrderController {
 			orders.setOid(UUIDUtils.getOrderId());
 			orders.setTotal(buyCart.getProductPrice());
 			orders.setOrderitems(items);
+			// 设置订单所属的商家
+			orders.setBid(items.get(0).getProduct().getBid());
 			/**
 			 * 将订单放入session中
 			 */
-			sessionProvider.setAttribute(request, response, Constants.CART_SESSION, orders);
+			sessionProvider.setAttribute(request, response, Constants.ORDERS_SESSION, orders);
 
 			model.addAttribute("addrs", addrs);
+			// 清空购物车
+			Cookie cookie = new Cookie(Constants.BUYCART_COOKIE, null);
+			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			response.addCookie(cookie);
 
 			return "/user/pay";
 		}
@@ -102,24 +109,55 @@ public class OrderController {
 	public String list(HttpServletRequest request, HttpServletResponse response, Model model) {
 
 		User user = (User) sessionProvider.getAttribute(request, response, Constants.BUYER_SESSION);
-		List<Orders> orders = ordersService.selectOrders(user);
+		List<Orders> orderList = ordersService.selectOrders(user);
 
-		model.addAttribute("orders", orders);
+		model.addAttribute("orderList", orderList);
+
+		System.out.println(orderList);
 
 		return "/user/order";
 	}
 
-	// TODO 还未实现
+	/**
+	 * 付款 @Description: TODO @param @param request @param @param
+	 * response @param @param model @param @return @return String @throws
+	 */
 	@RequestMapping(value = "/pay")
 	public String pay(HttpServletRequest request, HttpServletResponse response, Model model) {
+		// 获取当前用户
+		User user = (User) sessionProvider.getAttribute(request, response, Constants.BUYER_SESSION);
 
-		Orders orders = (Orders) sessionProvider.getAttribute(request, response, Constants.CART_SESSION);
+		Orders orders = (Orders) sessionProvider.getAttribute(request, response, Constants.ORDERS_SESSION);
+		// 设置状态0表示下单
+		orders.setState(0);
+
+		orders.setUid(user.getUid());
 		/**
 		 * 将订单存入数据库
 		 */
+		ordersService.insertOrders(orders);
 
+		String oid = orders.getOid();
+
+		List<Orderitem> orderitems = orders.getOrderitems();
+		for (Orderitem orderitem : orderitems) {
+			orderitem.setOid(oid);
+			orderitemService.addOrderitem(orderitem);
+		}
+		// 清空订单
+		sessionProvider.setAttribute(request, response, Constants.ORDERS_SESSION, null);
+
+		List<Orders> orderList = ordersService.selectOrders(user);
+		model.addAttribute("orderList", orderList);
+		return "/user/order";
+
+	}
+
+	@RequestMapping(value = "/detail")
+	public String detail(String oid, Model model) {
+		List<Orderitem> itemList = orderitemService.selectOrderItems(oid);
+		model.addAttribute("itemList", itemList);
 		return "/user/order_detail";
-
 	}
 
 }

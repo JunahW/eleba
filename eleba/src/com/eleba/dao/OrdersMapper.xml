@@ -9,6 +9,7 @@
     <result column="address" property="address" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="bid" property="bid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    oid, ordertime, total, state, address, name, uid
+    oid, ordertime, total, state, address, name, uid, bid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.eleba.pojo.OrdersExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.eleba.pojo.Orders" >
     insert into orders (oid, ordertime, total, 
       state, address, name, 
-      uid)
+      uid, bid)
     values (#{oid,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, #{total,jdbcType=DOUBLE}, 
       #{state,jdbcType=INTEGER}, #{address,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=VARCHAR})
+      #{uid,jdbcType=VARCHAR}, #{bid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.eleba.pojo.Orders" >
     insert into orders
@@ -133,6 +134,9 @@
       <if test="uid != null" >
         uid,
       </if>
+      <if test="bid != null" >
+        bid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="oid != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="uid != null" >
         #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="bid != null" >
+        #{bid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.uid != null" >
         uid = #{record.uid,jdbcType=VARCHAR},
       </if>
+      <if test="record.bid != null" >
+        bid = #{record.bid,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       state = #{record.state,jdbcType=INTEGER},
       address = #{record.address,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      uid = #{record.uid,jdbcType=VARCHAR}
+      uid = #{record.uid,jdbcType=VARCHAR},
+      bid = #{record.bid,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=VARCHAR},
       </if>
+      <if test="bid != null" >
+        bid = #{bid,jdbcType=VARCHAR},
+      </if>
     </set>
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
@@ -237,7 +251,8 @@
       state = #{state,jdbcType=INTEGER},
       address = #{address,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
-      uid = #{uid,jdbcType=VARCHAR}
+      uid = #{uid,jdbcType=VARCHAR},
+      bid = #{bid,jdbcType=VARCHAR}
     where oid = #{oid,jdbcType=VARCHAR}
   </update>
 </mapper>

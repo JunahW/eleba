@@ -27,4 +27,9 @@ public class OrdersServiceImpl implements OrdersService {
 		return ordersMapper.selectByExample(example);
 	}
 
+	@Override
+	public int insertOrders(Orders orders) {
+		return ordersMapper.insertSelective(orders);
+	}
+
 }

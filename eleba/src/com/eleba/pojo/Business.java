@@ -1,115 +1,119 @@
 package com.eleba.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Business {
-    private String bid;
+public class Business implements Serializable {
 
-    private String name;
+	private static final long serialVersionUID = 1L;
 
-    private String bossid;
+	private String bid;
 
-    private Date createtime;
+	private String name;
 
-    private Byte state;
+	private String bossid;
 
-    private Date statetime;
+	private Date createtime;
 
-    private String telephone;
+	private Byte state;
 
-    private String description;
+	private Date statetime;
 
-    private String notice;
+	private String telephone;
 
-    private String imgurl;
+	private String description;
 
-    private Integer sort;
+	private String notice;
 
-    public String getBid() {
-        return bid;
-    }
+	private String imgurl;
 
-    public void setBid(String bid) {
-        this.bid = bid == null ? null : bid.trim();
-    }
+	private Integer sort;
 
-    public String getName() {
-        return name;
-    }
+	public String getBid() {
+		return bid;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setBid(String bid) {
+		this.bid = bid == null ? null : bid.trim();
+	}
 
-    public String getBossid() {
-        return bossid;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setBossid(String bossid) {
-        this.bossid = bossid == null ? null : bossid.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public String getBossid() {
+		return bossid;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public void setBossid(String bossid) {
+		this.bossid = bossid == null ? null : bossid.trim();
+	}
 
-    public Byte getState() {
-        return state;
-    }
+	public Date getCreatetime() {
+		return createtime;
+	}
 
-    public void setState(Byte state) {
-        this.state = state;
-    }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
-    public Date getStatetime() {
-        return statetime;
-    }
+	public Byte getState() {
+		return state;
+	}
 
-    public void setStatetime(Date statetime) {
-        this.statetime = statetime;
-    }
+	public void setState(Byte state) {
+		this.state = state;
+	}
 
-    public String getTelephone() {
-        return telephone;
-    }
+	public Date getStatetime() {
+		return statetime;
+	}
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone == null ? null : telephone.trim();
-    }
+	public void setStatetime(Date statetime) {
+		this.statetime = statetime;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getTelephone() {
+		return telephone;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public void setTelephone(String telephone) {
+		this.telephone = telephone == null ? null : telephone.trim();
+	}
 
-    public String getNotice() {
-        return notice;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setNotice(String notice) {
-        this.notice = notice == null ? null : notice.trim();
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public String getImgurl() {
-        return imgurl;
-    }
+	public String getNotice() {
+		return notice;
+	}
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl == null ? null : imgurl.trim();
-    }
+	public void setNotice(String notice) {
+		this.notice = notice == null ? null : notice.trim();
+	}
 
-    public Integer getSort() {
-        return sort;
-    }
+	public String getImgurl() {
+		return imgurl;
+	}
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl == null ? null : imgurl.trim();
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 }

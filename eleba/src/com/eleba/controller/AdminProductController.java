@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.eleba.bean.PageBean;
+import com.eleba.pojo.Business;
 import com.eleba.pojo.Product;
 import com.eleba.service.AdminProductService;
+import com.eleba.utils.Constants;
+import com.eleba.utils.SessionProvider;
 import com.eleba.utils.UUIDUtils;
 import com.github.pagehelper.PageHelper;
 
@@ -26,6 +32,8 @@ import com.github.pagehelper.PageHelper;
 @Controller
 @RequestMapping(value = "/admin/product")
 public class AdminProductController {
+	@Autowired
+	private SessionProvider sessionProvider;
 
 	@Autowired
 	private AdminProductService adminProductService;
@@ -33,7 +41,12 @@ public class AdminProductController {
 	private String productPicPath;
 
 	@RequestMapping(value = "list")
-	public String listProduct(Model model, PageBean<Product> pageBean, Product product) {
+	public String listProduct(HttpServletRequest request, HttpServletResponse response, Model model,
+			PageBean<Product> pageBean, Product product) {
+
+		Business business = (Business) sessionProvider.getAttribute(request, response, Constants.SHOP_SESSION);
+		product.setBid(business.getBid());
+
 		PageHelper.startPage(pageBean.getCurrPage(), pageBean.getPageSize());
 		List<Product> listProduct = adminProductService.listProduct(product);
 		int totalCount = adminProductService.getTotalCountByProduct(product);

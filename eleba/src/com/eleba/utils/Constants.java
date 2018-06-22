@@ -28,15 +28,21 @@ public interface Constants {
 	 * 管理员Session
 	 */
 	public static final String ADMIN_SESSION = "admin_session";
+
+	/**
+	 * 商店Session
+	 */
+	public static final String SHOP_SESSION = "shop_session";
+
 	/**
 	 * 拦截路径
 	 */
 	public static final String ROOT_INTERCEPT = "/eleba/root/";
 	public static final String ADMIN_INTERCEPT = "/eleba/admin/";
 	public static final String USER_INTERCEPT = "/eleba/buyer/";
-	
+
 	/**
-	 * 管理员Session
+	 * 购物车Session
 	 */
-	public static final String CART_SESSION = "cart_session";
+	public static final String ORDERS_SESSION = "order_session";
 }

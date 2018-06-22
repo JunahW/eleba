@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta charset="utf-8"></meta>
@@ -80,7 +81,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${orders.orderitems}" var="item">
+					<c:forEach items="${order_session.orderitems}" var="item">
 						<tr>
 							<td>${item.product.pname}</td>
 							<td>${item.count}</td>
@@ -135,7 +136,7 @@
 		<div class="other_item">
 			<span>订单备注</span><input type="text">
 		</div>
-		<button class="pay_btn">确认下单</button>
+		<button class="pay_btn" onclick="javascript:location.href='${pageContext.request.contextPath}/buyer/pay.action'">确认下单</button>
 	</div>
 	</div>
 

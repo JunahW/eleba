@@ -26,4 +26,6 @@ public interface AdminOrderItemService {
 	 */
 	Orderitem selectOrderItemById(String itemid);
 
+	List<Orderitem> selectOrderItemByOid(String oid);
+
 }

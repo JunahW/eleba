@@ -1,73 +1,80 @@
 package com.eleba.pojo;
 
-public class Addr {
-    private Integer id;
+import java.io.Serializable;
 
-    private String buyerid;
+public class Addr implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private String name;
+	private Integer id;
 
-    private String city;
+	private String buyerid;
 
-    private String addr;
+	private String name;
 
-    private String phone;
+	private String city;
 
-    private Integer isdef;
+	private String addr;
 
-    public Integer getId() {
-        return id;
-    }
+	private String phone;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	private Integer isdef;
 
-    public String getBuyerid() {
-        return buyerid;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setBuyerid(String buyerid) {
-        this.buyerid = buyerid == null ? null : buyerid.trim();
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getBuyerid() {
+		return buyerid;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setBuyerid(String buyerid) {
+		this.buyerid = buyerid == null ? null : buyerid.trim();
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public String getAddr() {
-        return addr;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public void setAddr(String addr) {
-        this.addr = addr == null ? null : addr.trim();
-    }
+	public void setCity(String city) {
+		this.city = city == null ? null : city.trim();
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public String getAddr() {
+		return addr;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
+	public void setAddr(String addr) {
+		this.addr = addr == null ? null : addr.trim();
+	}
 
-    public Integer getIsdef() {
-        return isdef;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setIsdef(Integer isdef) {
-        this.isdef = isdef;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone == null ? null : phone.trim();
+	}
+
+	public Integer getIsdef() {
+		return isdef;
+	}
+
+	public void setIsdef(Integer isdef) {
+		this.isdef = isdef;
+	}
 }
