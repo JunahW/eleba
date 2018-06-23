@@ -1,5 +1,6 @@
 package com.eleba.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.eleba.pojo.Business;
 import com.eleba.pojo.BusinessExample;
 import com.eleba.pojo.BusinessExample.Criteria;
 import com.eleba.service.AdminBusinessService;
+import com.eleba.utils.UUIDUtils;
 
 @Service
 public class AdminBusinessServiceImpl implements AdminBusinessService {
@@ -42,6 +44,9 @@ public class AdminBusinessServiceImpl implements AdminBusinessService {
 	public int updateBusiness2Active(String bid) {
 		Business business = new Business();
 		business.setBid(bid);
+		// 设置审核时间
+		business.setStatetime(new Date());
+
 		business.setState((byte) 1);
 		return businessMapper.updateByPrimaryKeySelective(business);
 	}
@@ -66,6 +71,7 @@ public class AdminBusinessServiceImpl implements AdminBusinessService {
 
 	@Override
 	public int addBusiness(Business business) {
+		business.setBid(UUIDUtils.getId());
 		return businessMapper.insertSelective(business);
 	}
 

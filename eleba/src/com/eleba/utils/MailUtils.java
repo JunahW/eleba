@@ -56,7 +56,7 @@ public class MailUtils {
 		// message.setText("杩欐槸涓�灏佹縺娲婚偖浠讹紝璇�<a href='#'>点击激活</a>");
 
 		// 内容类型
-		String url = "<a href='http://192.169.163.13:8080/eleba/user/active.action?code=" + emailMsg + "'>点击激活</a>";
+		String url = "<a href='http://localhost:8080/eleba/user/active.action?code=" + emailMsg + "'>点击激活</a>";
 
 		message.setContent(url, "text/html;charset=utf-8");
 

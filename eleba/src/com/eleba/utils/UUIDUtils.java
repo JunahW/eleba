@@ -32,7 +32,7 @@ public class UUIDUtils {
 	 * @return
 	 */
 	public static String getOrderId() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String orderId = format.format(new Date());
 		Random random = new Random();
 		StringBuilder sb=new StringBuilder(orderId);

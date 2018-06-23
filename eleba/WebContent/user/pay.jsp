@@ -101,7 +101,7 @@
 				</tbody>
 			</table>
 			<div class="left_bottom">
-				<span class="money"><em>共¥</em>${orders.total}</span>
+				<span class="money"><em>共¥</em>${order_session.total}</span>
 				<!-- <span class="count">共<em>1</em>份商品 -->
 				</span>
 			</div>

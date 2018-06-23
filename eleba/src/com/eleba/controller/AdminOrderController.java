@@ -14,8 +14,10 @@ import com.eleba.bean.PageBean;
 import com.eleba.pojo.Business;
 import com.eleba.pojo.Orderitem;
 import com.eleba.pojo.Orders;
+import com.eleba.pojo.Product;
 import com.eleba.service.AdminOrderItemService;
 import com.eleba.service.AdminOrderSercvice;
+import com.eleba.service.AdminProductService;
 import com.eleba.utils.Constants;
 import com.eleba.utils.SessionProvider;
 import com.github.pagehelper.PageHelper;
@@ -28,6 +30,9 @@ public class AdminOrderController {
 	private SessionProvider sessionProvider;
 	@Autowired
 	private AdminOrderSercvice adminOrderSercvice;
+
+	@Autowired
+	private AdminProductService adminProductService;
 
 	@Autowired
 	private AdminOrderItemService adminOrderItemService;
@@ -58,9 +63,15 @@ public class AdminOrderController {
 		return "redirect:/admin/order/list.action";
 	}
 
-	@RequestMapping(value = "")
+	@RequestMapping(value = "/orderDetail")
 	public String orderDetail(String oid, Model model) {
 		List<Orderitem> itemList = adminOrderItemService.selectOrderItemByOid(oid);
+		Product product = null;
+		for (Orderitem orderitem : itemList) {
+			product = adminProductService.selectProductById(orderitem.getPid());
+			orderitem.setProduct(product);
+		}
+
 		model.addAttribute("itemList", itemList);
 
 		return "/admin/order/orderItem";

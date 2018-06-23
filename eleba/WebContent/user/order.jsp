@@ -101,7 +101,7 @@
 							<td class="order_time"><fmt:formatDate
 									value="${order.ordertime}" pattern="yyyy-MM-dd" /></td>
 							<td class="order_shop_image"><img class=""
-								src="image/shop.png"></td>
+								src="${pageContext.request.contextPath }/user/image/shop.png"></td>
 							<td class="order_info">
 								<p class="order_info_food">
 									<span class="order_info_food_list">豆干2份 </span> <span

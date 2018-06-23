@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eleba.pojo.User;
 import com.eleba.utils.Constants;
 import com.eleba.utils.SessionProvider;
 
@@ -14,22 +15,20 @@ public class UserInterceptor implements HandlerInterceptor {
 	@Autowired
 	private SessionProvider sessionProvider;
 
-	// 常量
-	private static final String INTERCEPTOR_URL = "/buy/";
-
-	// 方法前 /buyer/
+	// 方法前
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println("=======================" + request.getRequestURI());
 
-		if (request.getRequestURI().startsWith(INTERCEPTOR_URL)) {
-			Object user = sessionProvider.getAttribute(request, response, Constants.BUYER_SESSION);
-			if (user != null) {
+		if (request.getRequestURI().startsWith(Constants.USER_INTERCEPT)) {
+			User user = (User) sessionProvider.getAttribute(request, response, Constants.BUYER_SESSION);
+			if (null != user && 0 == user.getType()) {
 				return true;
 			}
 		}
 
-		response.sendRedirect("/eleba/user/login.action");
+		response.sendRedirect("/eleba/user/login.jsp");
 		return false;
 	}
 

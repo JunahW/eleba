@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/public.css">
-<link rel="stylesheet" type="text/css" href="css/order_detail.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/user/css/public.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/user/css/order_detail.css">
 <title>订单详情</title>
 </head>
 <body>
@@ -175,7 +175,7 @@
 		</div>
 	</div>
 </body>
-<script src="js/iconfont.js"></script>
-<script src="js/public.js"></script>
-<script src="js/order_detaill.js"></script>
+<script src="${pageContext.request.contextPath }/user/js/iconfont.js"></script>
+<script src="${pageContext.request.contextPath }/user/js/public.js"></script>
+<script src="${pageContext.request.contextPath }/user/js/order_detaill.js"></script>
 </html>

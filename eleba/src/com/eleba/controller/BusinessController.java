@@ -2,6 +2,7 @@ package com.eleba.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class BusinessController {
 
 	@RequestMapping(value = "/list")
 	public String list(Business business, PageBean<Business> pageBean, Model model) {
+		
+		business.setState((byte) 1);
+
 		// 设置每页显示20条
 		pageBean.setPageSize(20);
 		PageHelper.startPage(pageBean.getCurrPage(), pageBean.getPageSize());
@@ -51,9 +55,8 @@ public class BusinessController {
 	}
 
 	/**
-	 * 商家入驻 @Description:  @param @param business @param @param
-	 * user @param @param bfile @param @param model @param @return @return
-	 * String @throws
+	 * 商家入驻 @Description: @param @param business @param @param user @param @param
+	 * bfile @param @param model @param @return @return String @throws
 	 */
 	@RequestMapping(value = "/register")
 	public String registerBusiness(Business business, User user, MultipartFile bfile, Model model) {
@@ -80,7 +83,12 @@ public class BusinessController {
 			if (existUser.getState() == 1) {
 				if (existUser.getType() == 1) {
 					// 将商家添加至数据库
+					business.setState((byte) 2);
+					// 入驻时间
+					business.setCreatetime(new Date());
+
 					adminBusinessService.addBusiness(business);
+					model.addAttribute("msg", "注册成功，等待审核");
 					return "/user/success";
 				} else {
 					model.addAttribute("msg", "对不起，您没有该权限");

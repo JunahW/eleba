@@ -3,96 +3,98 @@ package com.eleba.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Product implements Serializable {
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	private String pid;
+	@JsonIgnore
+	private String pname;
 
-    private String pname;
+	private Double price;
+	@JsonIgnore
+	private String pimage;
 
-    private Double price;
+	private Date pdate;
+	@JsonIgnore
+	private String pdesc;
 
-    private String pimage;
+	private Integer pflag;
 
-    private Date pdate;
+	private String bid;
 
-    private String pdesc;
+	public String getPid() {
+		return pid;
+	}
 
-    private Integer pflag;
+	public void setPid(String pid) {
+		this.pid = pid == null ? null : pid.trim();
+	}
 
-    private String bid;
+	public String getPname() {
+		return pname;
+	}
 
-    public String getPid() {
-        return pid;
-    }
+	public void setPname(String pname) {
+		this.pname = pname == null ? null : pname.trim();
+	}
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public String getPname() {
-        return pname;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public void setPname(String pname) {
-        this.pname = pname == null ? null : pname.trim();
-    }
+	public String getPimage() {
+		return pimage;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public void setPimage(String pimage) {
+		this.pimage = pimage == null ? null : pimage.trim();
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public Date getPdate() {
+		return pdate;
+	}
 
-    public String getPimage() {
-        return pimage;
-    }
+	public void setPdate(Date pdate) {
+		this.pdate = pdate;
+	}
 
-    public void setPimage(String pimage) {
-        this.pimage = pimage == null ? null : pimage.trim();
-    }
+	public String getPdesc() {
+		return pdesc;
+	}
 
-    public Date getPdate() {
-        return pdate;
-    }
+	public void setPdesc(String pdesc) {
+		this.pdesc = pdesc == null ? null : pdesc.trim();
+	}
 
-    public void setPdate(Date pdate) {
-        this.pdate = pdate;
-    }
+	public Integer getPflag() {
+		return pflag;
+	}
 
-    public String getPdesc() {
-        return pdesc;
-    }
+	public void setPflag(Integer pflag) {
+		this.pflag = pflag;
+	}
 
-    public void setPdesc(String pdesc) {
-        this.pdesc = pdesc == null ? null : pdesc.trim();
-    }
+	public String getBid() {
+		return bid;
+	}
 
-    public Integer getPflag() {
-        return pflag;
-    }
-
-    public void setPflag(Integer pflag) {
-        this.pflag = pflag;
-    }
-
-    public String getBid() {
-        return bid;
-    }
-
-    public void setBid(String bid) {
-        this.bid = bid == null ? null : bid.trim();
-    }
+	public void setBid(String bid) {
+		this.bid = bid == null ? null : bid.trim();
+	}
 
 	@Override
 	public String toString() {
 		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price + ", pimage=" + pimage + ", pdate="
 				+ pdate + ", pdesc=" + pdesc + ", pflag=" + pflag + ", bid=" + bid + "]";
 	}
-    
+
 }

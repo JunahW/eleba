@@ -23,7 +23,9 @@ public class OrdersServiceImpl implements OrdersService {
 		OrdersExample example = new OrdersExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andUidEqualTo(user.getUid());
-
+		
+		example.setOrderByClause("`oid` DESC");
+		
 		return ordersMapper.selectByExample(example);
 	}
 

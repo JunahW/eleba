@@ -39,6 +39,9 @@ public class AdminProductController {
 	private AdminProductService adminProductService;
 	@Value("${product_pic}")
 	private String productPicPath;
+	
+	@Value("${p_img_server}")
+	private String productImgServer;
 
 	@RequestMapping(value = "list")
 	public String listProduct(HttpServletRequest request, HttpServletResponse response, Model model,
@@ -54,6 +57,8 @@ public class AdminProductController {
 
 		model.addAttribute("listProduct", listProduct);
 		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("productImgServer", productImgServer);
+		
 		// 设置回显
 		model.addAttribute("product", product);
 

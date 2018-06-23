@@ -15,10 +15,10 @@
 		method="post" enctype="multipart/form-data">
 		<div class="box">
 			<input class="box_in user" placeholder="店铺名" name="name">
-			<input class="box_in phone" placeholder="手机" name="">
-			<input class="box_in user" placeholder="用户名" name="username">
-			<input class="box_in password" placeholder="密码" name="password"><br />
-			<input type="file" class="file" name="bfile" accept="image/png,image/jpg,image/jepg">
+			<input class="box_in phone" placeholder="手机" name="telephone">
+			<input class="box_in user" placeholder="用户名" name="username"> <input class="box_in password" placeholder="密码" name="password"
+				type="password"><br />
+			<input type="file" class="file" name="bfile" accept="image/png,image/jpg">
 			<span style="color: red;">${msg}</span>
 			<button class="box_in btn" type="submit">注册商家</button>
 		</div>

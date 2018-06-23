@@ -95,14 +95,14 @@ public class OrderController {
 
 			model.addAttribute("addrs", addrs);
 			// 清空购物车
-			Cookie cookie = new Cookie(Constants.BUYCART_COOKIE, null);
-			cookie.setMaxAge(0);
-			cookie.setPath("/");
-			response.addCookie(cookie);
+			/*
+			 * Cookie cookie = new Cookie(Constants.BUYCART_COOKIE, null);
+			 * cookie.setMaxAge(0); cookie.setPath("/"); response.addCookie(cookie);
+			 */
 
 			return "/user/pay";
 		}
-		return "redirect:/eleba/business/list.action";
+		return "redirect:/business/list.action";
 	}
 
 	@RequestMapping(value = "/orders")
@@ -146,6 +146,11 @@ public class OrderController {
 		}
 		// 清空订单
 		sessionProvider.setAttribute(request, response, Constants.ORDERS_SESSION, null);
+		// 清空购物车
+		Cookie cookie = new Cookie(Constants.BUYCART_COOKIE, null);
+		cookie.setMaxAge(0);
+		cookie.setPath("/");
+		response.addCookie(cookie);
 
 		List<Orders> orderList = ordersService.selectOrders(user);
 		model.addAttribute("orderList", orderList);

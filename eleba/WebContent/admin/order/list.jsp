@@ -46,19 +46,21 @@
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 									width="10%">${order.total}</td>
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%">${order.total}翁</td>
+									width="10%">翁俊河</td>
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="10%"><c:if test="${order.state==0}">已付款</c:if> <c:if
-										test="${order.state==1}">
+									width="10%">
+									<%-- <c:if test="${order.state==0}">已付款</c:if> --%> <c:if
+										test="${order.state==0}">
 										<a
 											href="${ pageContext.request.contextPath }/admin/order/updateState.action?oid=${order.oid}"><font
 											color="blue">发货</font></a>
 									</c:if> <c:if test="${order.state==2}">
 													订单完成
-									</c:if></td>
+									</c:if>
+								</td>
 								<td align="center" style="HEIGHT: 22px"><input
 									type="button" value="订单详情"
-									onclick="javascript:location.href='${pageContext.request.contextPath }/admin/order/orderDetail.action?${order.oid}'" /></td>
+									onclick="javascript:location.href='${pageContext.request.contextPath }/admin/order/orderDetail.action?oid=${order.oid}'" /></td>
 							</tr>
 						</c:forEach>
 					</table>

@@ -55,13 +55,22 @@ public class UserController {
 		 */
 		User existUser = userService.selectUsersByUserName(user.getUsername());
 		User existUser2 = userService.selectUserByTelephone(user.getTelephone());
-		if (null != existUser) {
+		if (null != existUser && 0 == existUser.getType()) {
 			model.addAttribute("usernameMsg", "用户名已经存在");
-			return "/user/register";
+			return "/user/user_register";
 		}
-		if (null != existUser2) {
+		if (null != existUser2 && 0 == existUser2.getType()) {
 			model.addAttribute("telephoneMsg", "手机号已经存在");
-			return "/user/register";
+			return "/user/user_register";
+		}
+
+		if (null != existUser&&1==existUser.getType()) {
+			model.addAttribute("usernameMsg", "用户名已经存在");
+			return "/user/shop_person_register";
+		}
+		if (null != existUser2&&1==existUser2.getType()) {
+			model.addAttribute("telephoneMsg", "手机号已经存在");
+			return "/user/shop_person_register";
 		}
 
 		if (null != ufile && ufile.getOriginalFilename() != "") {

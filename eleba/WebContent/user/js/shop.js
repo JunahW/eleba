@@ -34,7 +34,6 @@ for (let i = 0, len = food_item_button.length; i < len; i++) {
 	food_item_button[i].onclick = function() {
 		food_item_button[i].style.display = "none";
 		var pid=food_item_button[i].id
-		alert(pid);
 		
 		 $.post("/eleba/cart/addCart.action",{'pid':pid},function(result){
 		        console.log(result);
@@ -55,7 +54,6 @@ for (let i = 0, len = food_item_button.length; i < len; i++) {
 		
 		var pid=food_item_choose_sub[i].id;
 		pid=pid.substring(0,pid.length-1);
-		alert(pid);
 		
 		 $.post("/eleba/cart/addCart.action",{'count':'-1','pid':pid},function(result){
 		        console.log(result);
@@ -72,7 +70,6 @@ for (let i = 0, len = food_item_button.length; i < len; i++) {
 		pid=pid.substring(0,pid.length-1);
 		
 		
-		alert(pid);
 		 $.post("/eleba/cart/addCart.action",{'pid':pid},function(result){
 		        console.log(result);
 		    },'json');

@@ -19,6 +19,9 @@ public class Orderitem implements Serializable {
 	private String pid;
 
 	public String getPid() {
+		if (this.pid!=null) {
+			return this.pid;
+		}
 		this.pid=product.getPid();
 		return pid;
 	}
