@@ -12,15 +12,15 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String pid;
-	@JsonIgnore
+	
 	private String pname;
 
 	private Double price;
-	@JsonIgnore
+	
 	private String pimage;
 
 	private Date pdate;
-	@JsonIgnore
+	
 	private String pdesc;
 
 	private Integer pflag;
