@@ -154,7 +154,7 @@ public class OrderController {
 
 		List<Orders> orderList = ordersService.selectOrders(user);
 		model.addAttribute("orderList", orderList);
-		return "/user/order";
+		return "redirect:/buyer/orders.action";
 
 	}
 
